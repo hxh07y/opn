@@ -64,7 +64,8 @@ function serveHTTP(addonInterface, opts = {}) {
                 opn(installUrl);
             }
             if (process.argv.includes('--install')) {
-                opn(url.replace('http://', 'stremio://'));
+                const stremioURL = url.replace('http://', 'stremio://');
+                console.log(`To install the addon in Stremio, open this link manually: ${stremioURL}`);
             }
             resolve({ url, server });
         });
