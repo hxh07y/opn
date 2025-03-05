@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "web": "LOG_ENABLED=true LOG_LEVEL=info yarn start -- --launch",
+    "prd": "LOG_ENABLED=true LOG_LEVEL=info node server.js --install",
     "app": "LOG_ENABLED=true LOG_LEVEL=info yarn start -- --install",
     "test": "LOG_ENABLED=true LOG_LEVEL=info node --test",
     "dev": "LOG_ENABLED=true LOG_LEVEL=info nodemon server.js"
