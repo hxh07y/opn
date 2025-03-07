@@ -54,9 +54,7 @@ function serveHTTP(addonInterface, opts = {}) {
     const server = app.listen(opts.port, "0.0.0.0");
     return new Promise(function(resolve, reject) {
         server.on('listening', function() {
-            let url = `http://127.0.0.1:${server.address().port}/manifest.json`;
-            if (process.env.HUGGINGFACE_SPACE_ID) {
-                url = `https://${process.env.HUGGINGFACE_SPACE_ID}.hf.space/manifest.json`;}
+            const url = `http://127.0.0.1:${server.address().port}/manifest.json`;
             console.log('HTTP addon accessible at:', url);
             if (process.argv.includes('--launch')) {
                 const base = 'https://staging.strem.io#';
@@ -65,8 +63,7 @@ function serveHTTP(addonInterface, opts = {}) {
                 opn(installUrl);
             }
             if (process.argv.includes('--install')) {
-                let stremioURL = url.replace(/^https?:\/\//, 'stremio://');
-                console.log(`To install the addon in Stremio, open this link manually: ${stremioURL}`);
+                opn(url.replace('http://', 'stremio://'));
             }
             resolve({ url, server });
         });
