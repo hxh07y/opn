@@ -50,7 +50,8 @@ function serveHTTP(addonInterface, opts = {}) {
         res.end(landingHTML);
     });
 
-    const server = app.listen(opts.port);
+    // const server = app.listen(opts.port);
+    const server = app.listen(opts.port, "0.0.0.0");
     return new Promise(function(resolve, reject) {
         server.on('listening', function() {
             let url = `http://127.0.0.1:${server.address().port}/manifest.json`;
